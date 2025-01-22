@@ -6,6 +6,17 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var studentRouter = require('./routes/student');
+var studentgradeRouter = require('./routes/studentgrade');
+var subjectRouter = require('./routes/subject');
+var subjectaddRouter = require('./routes/subjectadd');
+var studentregistrationRouter = require('./routes/studentregistration');
+var tuitionRouter = require('./routes/tuition');
+var loginRouter = require('./routes/login');
+var studentdashboardRouter = require('./routes/studentdashboard');
+var studentprofileRouter = require('./routes/studentprofile');
+var adminsubjectRouter = require('./routes/adminsubject');
+var syslogsRouter = require('./routes/syslogs');
 
 var app = express();
 
@@ -21,6 +32,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/login', loginRouter);
+app.use('/student', studentRouter);
+app.use('/studentgrade', studentgradeRouter);
+app.use('/subject', subjectRouter);
+app.use('/subjectadd', subjectaddRouter);
+app.use('/studentregistration', studentregistrationRouter);
+app.use('/tuition', tuitionRouter);
+app.use('/studentdashboard', studentdashboardRouter);
+app.use('/studentprofile', studentprofileRouter);
+app.use('/adminsubject', adminsubjectRouter);
+app.use('/syslogs', syslogsRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
