@@ -4,6 +4,14 @@
   background: linear-gradient(to right, #EB5A3C, #DF9755);
 }
 
+.custom-gradient2 {
+  background: linear-gradient(to bottom, #EB5A3C, #DF9755);
+}
+
+.glass-gradient {
+  background: linear-gradient(#bf6123, #77370d 40%, #612700 3%, #612700);
+}
+
 .loginbody {
   background-image: url('https://i.postimg.cc/jdhfMP7D/vasily-koloda-8-Cq-Dv-Puo-k-I-unsplash.jpg');
   background-size: cover;
@@ -11,38 +19,49 @@
   background-position: center;
 }
 
-.card-title {
-  color: rgb(60, 60, 60);
-  transition: color 0.3s ease;
-}
-
 .card-body {
   background-color: transparent;
   transition: background-color 0.3s ease;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
-.view-grades-card:hover .card-body {
-  background-color: #007bff;
+.card-title {
+  color: rgb(60, 60, 60);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(30px); /* Initially move the text down */
+  opacity: 0; /* Start with low opacity (hidden) */
+  transition: opacity 0.4s ease, transform 0.4s ease, color 0.3s ease; /* Smooth transition for opacity, position, and color */
 }
 
-.view-tuition-card:hover .card-body {
-  background-color: #ffc107;
+.view-student-card:hover .card-body {
+  background-color: #007bff28;
 }
 
-.check-profile-card:hover .card-body {
-  background-color: #28a745;
+.view-subject-card:hover .card-body {
+  background-color: #ffc10744;
 }
 
-.view-grades-card:hover .card-body h3 {
-  color: #ffffff; /* White text on hover */
+.check-tuition-card:hover .card-body {
+  background-color: #28a7464d;
 }
 
-.view-tuition-card:hover .card-body h3 {
-  color: #ffffff; /* White text on hover */
+.view-student-card:hover .card-body,
+.view-subject-card:hover .card-body,
+.check-tuition-card:hover .card-body {
+  background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 1.0)); /* Vignette effect on hover */
 }
 
-.check-profile-card:hover .card-body h3 {
-  color: #ffffff; /* White text on hover */
+.view-student-card:hover .card-title,
+.view-subject-card:hover .card-title,
+.check-tuition-card:hover .card-title {
+  opacity: 1; /* Fade in the text */
+  transform: translateX(-50%) translateY(-50%); /* Move the text up */
+  color: #ffffff; /* Change text color to white on hover */
 }
 
 .modal-lg-custom {
@@ -51,6 +70,10 @@
 
 .modal-lg-custom2 {
   max-width: 60%; /* Adjust percentage as needed for desired width */
+}
+
+.modal-lg-custom3 {
+  max-width: 40%; /* Adjust percentage as needed for desired width */
 }
 
 .table-modern {
@@ -118,4 +141,23 @@
 }
 .table-dim{
   background-color: rgb(243, 243, 243);
+}
+
+body.dark-mode {
+  background-color: #121212; /* Dark background */
+  color: #f1f1f1; /* Light text */
+}
+
+body.dark-mode button {
+  background-color: #444444; /* Dark button background */
+  color: #f1f1f1; /* Light button text */
+  border: none;
+}
+
+#sidebarToggle {
+  transition: transform 0.3s ease-out;
+}
+
+#sidebarToggle.clicked {
+  transform: rotate(180deg);
 }

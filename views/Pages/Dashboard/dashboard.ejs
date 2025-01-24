@@ -1,33 +1,37 @@
-<div class="container" style="text-align: center;">
-    <div class="row">
-        <div class="col">
-            <a href="/subject" style="text-decoration: none;">
-                <div class="card view-grades-card" style="max-width: 100%; cursor: pointer;">
-                    <div class="card-body">
-                        <h3 class="card-title" style="text-align: center;">View Grades</h3><br><br>
-                    </div>
-                </div>
-            </a>
-        </div>
+<div class="container-fluid d-flex justify-content-center align-items-center" 
+     style="width: 93%; height: 100px; color: white; font-size: 2rem; 
+            background: linear-gradient(to bottom, #EB5A3C, #DF9755);
+            border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    <h1 style="text-align: center; font-weight: bold; letter-spacing: 2px;">SOLARA INSTITUTE DASHBOARD</h1>
+</div>
 
-        <div class="col">
-            <a href="/tuition" style="text-decoration: none;">
-                <div class="card view-tuition-card" style="max-width: 100%; cursor: pointer;">
-                    <div class="card-body">
-                        <h3 class="card-title" style="text-align: center;">View Tuition</h3><br><br>
-                    </div>
-                </div>
-            </a>
-        </div>
 
-        <div class="col">
-            <a href="/studentprofile" style="text-decoration: none;">
-                <div class="card check-profile-card" style="max-width: 100%; cursor: pointer;">
-                    <div class="card-body">
-                        <h3 class="card-title" style="text-align: center;">Check Profile</h3><br><br>
-                    </div>
+
+<div class="container-fluid d-flex flex-column" style="height: 80vh;">
+    <div class="card-body d-flex justify-content-between">
+        <!-- First Card -->
+        <a href="/student" class="col-4 d-flex flex-column align-items-center">
+            <div class="card view-student-card w-100" style="height: 80%; border-radius: 10px; font-size: 2rem; cursor: pointer; background-image: url('https://i.ibb.co/mFY7LWQ/image-2025-01-24-152805710.png'); background-size: cover; background-position: center;">
+                <div class="card-body d-flex align-items-center justify-content-center">
+                    <h3 class="card-title">View Students</h3>
                 </div>
-            </a>
-        </div>
+            </div>
+        </a>
+        <!-- Second Card -->
+        <a href="/adminsubject" class="col-4 d-flex flex-column align-items-center">
+            <div class="card view-subject-card w-100" style="height: 80%; border-radius: 10px; font-size: 2rem; cursor: pointer; background-image: url('https://i.ibb.co/RHkTwRV/image.png'); background-size: cover; background-position: center;">
+                <div class="card-body d-flex align-items-center justify-content-center">
+                    <h3 class="card-title">View Subjects</h3>
+                </div>
+            </div>
+        </a>
+        <!-- Third Card -->
+        <a href="/tuition" class="col-4 d-flex flex-column align-items-center">
+            <div class="card check-tuition-card w-100" style="height: 80%; border-radius: 10px; font-size: 2rem; cursor: pointer; background-image: url('https://i.ibb.co/6HQmdDQ/image.png'); background-size: cover; background-position: center;">
+                <div class="card-body d-flex align-items-center justify-content-center">
+                    <h3 class="card-title">View Tuitions</h3>
+                </div>
+            </div>
+        </a>
     </div>
 </div>

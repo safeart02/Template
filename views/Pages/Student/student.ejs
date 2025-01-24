@@ -14,7 +14,7 @@
         <div class="card-body mt-5">
             <!-- Table with scrollable content -->
             <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
-                <table class="table table-modern">
+                <table class="table table-modern" id="studentsTable">
                     <thead>
                         <tr>
                             <th scope="col">Student ID</th>
@@ -33,25 +33,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">2025-01-0001</th>
-                            <td>Otto</td>
-                            <td>Calabasa</td>
-                            <td>Mcdonalds</td>
-                            <td>2000-12-30</td>
-                            <td>09955556644</td>
-                            <td>studentofthisschool@example.com</td>
-                            <td>Blk 50, Lot 50, Southern Montissori, Mayon Volcano, Calamares, Laguna</td>
-                            <td>Enrolled</td>
-                            <td>Shawn Desanta</td>
-                            <td>2025-01-22</td>
-                            <td>
-                                <button class="btn btn-primary" id="BtnView">View</button>
-                            </td>
-                            <td>
-                                <button class="btn btn-warning" id="BtnEdit">Edit</button>
-                            </td>
-                        </tr>
+                        
                     </tbody>
                 </table>
             </div>
@@ -160,10 +142,10 @@
     role="dialog">
     <div class="modal-dialog modal-lg-custom2" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabelnew">Subjects</h5>
+            <div class="modal-header custom-gradient2 justify-content-center">
+                <h5 class="modal-title" id="exampleModalLabelnew" style="color: white;">Add Student</h5>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="background-color:rgb(240, 240, 240)">
                 <div class="container" style="text-align: center;">
                     <div class="row">
                         <div class="col-md">
@@ -175,7 +157,7 @@
                                         <div class="form-row">
                                             <div class="col">
                                                 <label for="first_name">First Name:</label><br>
-                                                <input type="text" class="form-control" id="input2"
+                                                <input type="text" class="form-control" id="first_name"
                                                     name="first_name"><br><br>
                                             </div>
                                             <div class="col">
@@ -223,7 +205,7 @@
                                                     readonly><br>
                                             </div>
                                         </div>
-
+<!-- 
                                         <div class="form-row">
                                             <div class="col">
                                                 <label for="created_by">Created By:</label><br>
@@ -235,7 +217,7 @@
                                                 <input type="text" class="form-control" id="created_date"
                                                     name="created_date" readonly><br>
                                             </div>
-                                        </div>
+                                        </div> -->
 
                                         <br><br>
 
@@ -252,7 +234,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success" data-dismiss="modal">Confirm</button>
+                <button type="button" class="btn btn-success" id="confirmBtn">Confirm</button>
             </div>
         </div>
     </div>
@@ -266,7 +248,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabelnew">Subjects</h5>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="background-color:rgb(240, 240, 240)">
                 <div class="container" style="text-align: center;">
                     <div class="card" style="max-width: 100%;">
                         <div class="card-body">
@@ -310,33 +292,6 @@
 </div>
 
 
-<!--Modal for editing student subjects-->
-<div class="modal fade" id="deleteStudent" tabindex="-1" aria-labelledby="exampleModalLabelnew" aria-hidden="true"
-    role="dialog">
-    <div class="modal-dialog modal-lg-custom" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabelnew">Subjects</h5>
-            </div>
-            <div class="modal-body">
-                <div class="container" style="text-align: center; max-width: 100%">
-                    <div class="card" style="max-width: 100%;">
-
-
-
-                        <div class="card-body">
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success" data-dismiss="modal">Save Changes</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!--Modal for editing student subjects-->
 <div class="modal fade" id="editModal2" tabindex="-1" aria-labelledby="exampleModalLabelnew" aria-hidden="true"
@@ -346,7 +301,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabelnew">Subjects</h5>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="background-color:rgb(240, 240, 240)">
                 <div class="container" style="text-align: center; max-width: 100%">
                     <div class="card" style="max-width: 100%;">
 
@@ -372,10 +327,10 @@
     role="dialog">
     <div class="modal-dialog modal-lg-custom2" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabelnew">Update Student Profile</h5>
+            <div class="modal-header custom-gradient2 justify-content-center">
+                <h5 class="modal-title" id="exampleModalLabelnew" style="color:white;">Update Student Profile</h5>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="background-color:rgb(240, 240, 240)">
                 <div class="container" style="text-align: center;">
                     <div class="card">
                         <div class="card-body">
@@ -396,44 +351,44 @@
                             <div class="row">
                                 <div class="col">
                                     <label for="first_name">First Name:</label><br>
-                                    <input type="text" class="form-control" id="input2" name="first_name"><br><br>
+                                    <input type="text" class="form-control" id="first_name_edit" name="first_name"><br><br>
                                 </div>
                                 <div class="col">
                                     <label for="middle_name">Middle Name:</label><br>
-                                    <input type="text" class="form-control" id="middle_name" name="middle_name"><br><br>
+                                    <input type="text" class="form-control" id="middle_name_edit" name="middle_name"><br><br>
                                 </div>
                                 <div class="col">
                                     <label for="last_name">Last Name:</label><br>
-                                    <input type="text" class="form-control" id="last_name" name="last_name"><br><br>
+                                    <input type="text" class="form-control" id="last_name_edit" name="last_name"><br><br>
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="col">
                                     <label for="date_of_birth">Birth Date:</label><br>
-                                    <input style="text-align: center;" type="date" id="date_of_birth"
+                                    <input style="text-align: center;" type="date" id="date_of_birth_edit"
                                         class="form-control" name="date_of_birth" value="2000-12-30" min="1978-01-01"
                                         max="2060-12-31" /><br><br>
                                 </div>
                                 <div class="col">
                                     <label for="student_id">Student ID:</label><br>
-                                    <input type="text" class="form-control" id="student_id" name="student_id"><br><br>
+                                    <input type="text" class="form-control" id="student_id_edit" name="student_id"><br><br>
                                 </div>
                                 <div class="col">
                                     <label for="contact_no">Contact Number:</label><br>
-                                    <input type="text" class="form-control" id="contact_no" name="contact_no"><br><br>
+                                    <input type="text" class="form-control" id="contact_no_edit" name="contact_no"><br><br>
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="col">
                                     <label for="email">Email:</label><br>
-                                    <input type="text" class="form-control" id="email" name="email"
+                                    <input type="text" class="form-control" id="email_edit" name="email"
                                         placeholder="enteryouremail@example.com"><br>
                                 </div>
                                 <div class="col">
                                     <label for="status">Status:</label><br>
-                                    <select class="form-control" id="status" name="status">
+                                    <select class="form-control" id="status_edit" name="status">
                                         <option value="Enrolled">Enrolled</option>
                                         <option value="Suspended">Suspended</option>
                                         <option value="Graduate">Graduate</option>
@@ -444,7 +399,17 @@
                             <div class="form-row">
                                 <div class="col">
                                     <label for="address">Address:</label><br>
-                                    <input type="text" class="form-control" id="address" name="address"><br>
+                                    <input type="text" class="form-control" id="address_edit" name="address"><br>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <label for = "created_by">Created By:</label><br>
+                                    <input type="text" class="form-control" id="created_by_edit" name="created_by" disabled><br>
+                                </div>
+                                <div class="col">
+                                    <label for="created_date">Created Date:</label><br>
+                                    <input type="text" class="form-control" id="created_date_edit" name="created_date" disabled><br>
                                 </div>
                             </div>
                         </div>
@@ -453,8 +418,33 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success" data-dismiss="modal">Save Changes</button>
+                <button type="button" class="btn btn-success" id="saveEdit">Save Changes</button>
             </div>
         </div>
     </div>
+</div>
+
+<!-- Modal for deleteting students -->
+<div class = "modal fade" id="deleteStudent" tabindex="-1" aria-labelledby="exampleModalLabelnew" aria-hidden="true"
+    role="dialog">
+    <div class="modal-dialog modal-lg-custom3" role="document">
+        <div class="modal-content">
+            <div class="modal-header custom-gradient2 justify-content-center">
+                <h5 class="modal-title" id="exampleModalLabelnew" style="color:white;">Delete Student</h5>
+            </div>
+            <div class="modal-body"  style="background-color:rgb(240, 240, 240)">
+                <div class="container" style="text-align: center; max-width: 100%">
+                    <div class="card" style="max-width: 100%;">
+                        <div class="card-body">
+                            <h3 style="text-align: center;">Are you sure you want to eliminate this student?</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" id="BtnDeleteStudent" data-id="${student.ms_id"}>Delete</button>
+            </div>
+        </div>
+    </div>    
 </div>

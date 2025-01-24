@@ -3,7 +3,7 @@
 </div>
 
 <div class="container mt-4 custom">
-    <table class="table table-modern">
+    <table class="table table-modern" >
         <thead>
             <tr>
                 <th>Student ID</th>
@@ -14,133 +14,8 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
-            <!-- Row for Student 1 -->
-            <tr>
-                <td>202101</td>
-                <td>2023-2024</td>
-                <td>1</td>
-                <td>PAID</td>
-                <td>$500</td>
-                <td>
-                    <button class="btn btn-primary1 btn-sm" type="button" data-toggle="collapse" data-target="#details1"
-                        aria-expanded="false" aria-controls="details1">
-                        View Details
-                    </button>
-                    <button class="btn btn-primary1 btn-sm" type="button" id="BtnEditTuition">
-                        Edit
-                    </button>
-                    <button class="btn btn-primary1 btn-sm" type="button">
-                        Delete
-                    </button>
-                </td>
-            </tr>
-            <tr class="collapse" id="details1">
-                <td colspan="6">
-                    <div class="collapse-content">
-                        <h5>Transaction of Tuition Fee</h5>
-
-                        <table class="table table-bordered">
-                            <div class="mt-5"
-                                style="position: absolute; bottom: 10px; right: 10px; display: flex; gap: 10px;">
-                                <button class="btn btn-primary" id="BtnNewTransaction">New Transaction</button>
-                                <button class="btn btn-danger">Delete Transaction</button>
-                            </div>
-                            <thead>
-                                <tr>
-                                    <th>Tuition Fee ID</th>
-                                    <th>Mode of Payment</th>
-                                    <th>Amount</th>
-                                    <th>Previous Balance</th>
-                                    <th>Current Balance</th>
-                                    <th>Received By</th>
-                                    <th>Paid By</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Cash</td>
-                                    <td>$300</td>
-                                    <td>$300</td>
-                                    <td>$300</td>
-                                    <td>Shawn Kamandag</td>
-                                    <td>The Rock</td>
-                                    <td>
-                                        <button class="btn btn-primary" type="button" id="BtnEditTransaction">Edit</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Cash</td>
-                                    <td>$300</td>
-                                    <td>$300</td>
-                                    <td>$300</td>
-                                    <td>Shawn Kamandag</td>
-                                    <td>The Rock</td>
-                                    <td>
-                                        <button class="btn btn-primary" type="button">Edit</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </td>
-            </tr>
-
-            <!-- Row for Student 2 -->
-            <tr>
-                <td>202102</td>
-                <td>2023-2024</td>
-                <td>2</td>
-                <td>UNPAID</td>
-                <td>$400</td>
-                <td>
-                    <button class="btn btn-primary1 btn-sm" type="button" data-toggle="collapse" data-target="#details2"
-                        aria-expanded="false" aria-controls="details2">
-                        View Details
-                    </button>
-                    <button class="btn btn-primary1 btn-sm" type="button" id="BtnEdit1">
-                        Edit
-                    </button>
-                    <button class="btn btn-primary1 btn-sm" type="button">
-                        Delete
-                    </button>
-                </td>
-            </tr>
-            <tr class="collapse" id="details2">
-                <td colspan="6">
-                    <div class="collapse-content">
-                        <h5>Transaction of Tuition Fee</h5>
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Tuition Fee ID</th>
-                                    <th>Mode of Payment</th>
-                                    <th>Amount</th>
-                                    <th>Previous Balance</th>
-                                    <th>Current Balance</th>
-                                    <th>Received By</th>
-                                    <th>Paid By</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Cheque</td>
-                                    <td>$400</td>
-                                    <td>$0</td>
-                                    <td>$0</td>
-                                    <td>Shawn Kamandag</td>
-                                    <td>John Cena</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </td>
-            </tr>
+        <tbody id="tuitionTableBody">
+            
         </tbody>
     </table>
 </div>

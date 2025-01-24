@@ -1,30 +1,30 @@
 var express = require('express');
 var router = express.Router();
 const {
-  Select,
-  Update,
-  Insert,
-  Delete,
-} = require("../routes/repository/db_connect");
+    Select,
+    Update,
+    Insert,
+    Delete,
+  } = require("../routes/repository/db_connect");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('adminsubject', { title: 'Express' });
+  res.render('subjectprice', { title: 'Express' });
 });
 
 module.exports = router;
 
 //fill edit subjects
-router.get("/get-subject/:id", (req, res) => {
+router.get("/get-subjectprice/:id", (req, res) => {
   try {
-    const subjectId = req.params.id; // Get the subject ID from the request parameters
+    const subjectpriceId = req.params.id; // Get the subject ID from the request parameters
 
-    if (!subjectId) {
-      return res.status(400).json({ message: "Subject ID is required" });
+    if (!subjectpriceId) {
+      return res.status(400).json({ message: "Subject Price ID is required" });
     }
 
-    const sql = `SELECT * FROM master_subject WHERE ms_id = ${subjectId}`; // SQL query to retrieve subject by ID
-    const params = [subjectId]; // Query parameters
+    const sql = `SELECT * FROM master_subject_price WHERE msp_id = ${subjectpriceId}`; // SQL query to retrieve subject price by ID
+    const params = [subjectpriceId]; // Query parameters
 
     Select(sql, (err, result) => {
       if (err) {
@@ -37,25 +37,25 @@ router.get("/get-subject/:id", (req, res) => {
       }
 
       res.status(200).json({
-        message: "Subject retrieved successfully",
+        message: "Subject Price retrieved successfully",
         subject: result[0], // Return the first (and expected only) result
       });
     });
   } catch (error) {
-    console.error("Error fetching subject data:", error);
+    console.error("Error fetching subject price data:", error);
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
 
-router.get("/get-subject", (req, res) => {
+router.get("/get-subjectprice", (req, res) => {
   try {
-    let sql = `SELECT * FROM master_subject`;
+    let sql = `SELECT * FROM master_subject_price`;
 
     Select(sql, (err, result) => {
       if (err) throw err;
       res.status(200).json({
         message: "Subjects retrieved successfully",
-        subjects: result,
+        subjectsprice: result,
       });
     });
   } catch (error) {
@@ -63,7 +63,7 @@ router.get("/get-subject", (req, res) => {
   }
 });
 
-router.post("/add-subject", (req, res) => {
+router.post("/add-subjectprice", (req, res) => {
   try {
     const {
       code,
@@ -79,8 +79,8 @@ router.post("/add-subject", (req, res) => {
     Insert(sql, data, (err, result) => {
       if (err) throw err;
       res.status(200).json({
-        message: "Subject added successfully",
-        subject: result,
+        message: "Subject Price added successfully",
+        subjectprice: result,
       });
     });
 
@@ -90,18 +90,18 @@ router.post("/add-subject", (req, res) => {
 });
 
 //This is for eliminating a subject
-router.delete("/delete-subject", (req, res) => {
+router.delete("/delete-subjectprice", (req, res) => {
   try {
-    const subjectId = req.body.id; // Extract the subject ID from the route parameters
+    const subjectpriceId = req.body.id; // Extract the subject ID from the route parameters
 
-    if (!subjectId) {
-      return res.status(400).json({ message: "Subject ID is required" });
+    if (!subjectpriceId) {
+      return res.status(400).json({ message: "Subject Price ID is required" });
     }
 
     // Construct the SQL query to delete the subject record
-    const sql = `DELETE FROM master_subject WHERE ms_id = ${subjectId}`;
+    const sql = `DELETE FROM master_subject_price WHERE msp_id = ${subjectpriceId}`;
 
-    const params = [subjectId]; // Bind the subject ID to the query
+    const params = [subjectpriceId]; // Bind the subject ID to the query
 
     Delete(sql, params, (err, result) => {
       if (err) {
@@ -110,10 +110,10 @@ router.delete("/delete-subject", (req, res) => {
       }
 
       if (result.affectedRows === 0) {
-        return res.status(404).json({ message: "Subject not found" });
+        return res.status(404).json({ message: "Subject Price not found" });
       }
 
-      res.status(200).json({ message: "Subject deleted successfully" });
+      res.status(200).json({ message: "Subject Price deleted successfully" });
 
     });
   } catch (error) {
@@ -122,13 +122,13 @@ router.delete("/delete-subject", (req, res) => {
   }
 });
 
-router.put("/update-subject/:id", (req, res) => {
+router.put("/update-subjectprice/:id", (req, res) => {
   try {
-    const subjectId = req.params.id; // Extract the subject ID from the route parameters
+    const subjectpriceId = req.params.id; // Extract the subject ID from the route parameters
     const { ms_code, ms_description, ms_status, ms_created_by, ms_created_date } = req.body;
 
-    if (!subjectId) {
-      return res.status(400).json({ message: "Subject ID is required" });
+    if (!subjectpriceId) {
+      return res.status(400).json({ message: "Subject Price ID is required" });
     }
 
     // Construct the SQL query to update the subject record
@@ -144,7 +144,7 @@ router.put("/update-subject/:id", (req, res) => {
       ms_status,
       ms_created_by,
       ms_created_date,
-      subjectId, // Bind the subject ID for the WHERE clause
+      subjectpriceId, // Bind the subject ID for the WHERE clause
     ];
 
     // Use the existing method for executing the query (Update function)
@@ -155,10 +155,10 @@ router.put("/update-subject/:id", (req, res) => {
       }
 
       if (result.affectedRows === 0) {
-        return res.status(404).json({ message: "Subject not found or not updated" });
+        return res.status(404).json({ message: "Subject Price not found or not updated" });
       }
 
-      res.status(200).json({ message: "Subject updated successfully" });
+      res.status(200).json({ message: "Subject Price updated successfully" });
     });
 
   } catch (error) {

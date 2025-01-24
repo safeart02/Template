@@ -1,39 +1,200 @@
-<div class = "container" style="text-align: center;">
+<div class="container" style="text-align: center;">
     <h1>Subjects</h1>
 </div>
 
-<div class = "container" style="text-align: center;">
+<div class="container" style="text-align: center;">
     <div class="card" style="max-width: 100%;">
+        <nav class="navbar navbar-light" style="position: absolute; top: 12px; left: 10px; display: flex; gap: 10px;">
+            <form class="form-inline">
+              <input id="searchInput"class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="width: 400px;">
+            </form>
+          </nav>
         <div style="position: absolute; top: 15px; right: 10px; display: flex; gap: 10px;">
-            <button class="btn btn-primary">Add Subject</button>
-            <button class="btn btn-primary">Edit Subject</button>
-            <button class="btn btn-danger">Delete Subject</button>
+            <button class="btn btn-primary" id="BtnAddSubject">Add Subject</button>
         </div>
         <div class="card-body mt-5">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Subject Code</th>
-                        <th scope="col">Subject Description</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Created By</th>
-                        <th scope="col">Created Date</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">ITEC55</th>
-                        <td>Data Analytics</td>
-                        <td>Active</td>
-                        <td>John Cena</td>
-                        <td>2020-02-22</td>
-                        <td>
-                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
-                        </td>
-                </tr>
-                </tbody>
+            <!-- Table with scrollable content -->
+            <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
+                <table class="table table-modern sortable" id="subjectTable">
+                    <thead>
+                        <tr>
+                            <th scope="col">Subject Code</th>
+                            <th scope="col">Subject Description</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Created By</th>
+                            <th scope="col">Created Date</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal for adding subjects-->
+<div class="modal fade rounded-0" id="addSubject" tabindex="-1" aria-labelledby="exampleModalLabelnew"
+    aria-hidden="true" role="dialog">
+    <div class="modal-dialog modal-lg-custom3" role="document">
+        <div class="modal-content">
+            <div class="modal-header justify-content-center custom-gradient2">
+                <h5 class="modal-title" id="exampleModalLabelnew" style="color: white;">Adding Subjects</h5>
+            </div>
+            <div class="modal-body">
+                <div class="container" style="text-align: center; max-width: 100%">
+                    <div class="card" style="max-width: 100%;">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="code">Subject Code:</label>
+                                    <input type="text" class="form-control" id="code">
+                                </div>
+                                <div class="col">
+                                    <label for="description">Subject Description:</label>
+                                    <input type="text" class="form-control" id="description">
+                                </div>
+                                <div class="col">
+                                    <label for="status">Status:</label>
+                                    <select class="form-control" id="status" name="status">
+                                        <option value="Active">Active</option>
+                                        <option value="Inactive">Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="created_by">Created By:</label><br>
+                                    <input type="text" class="form-control" id="created_by" name="created_by" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="created_date">Created Date:</label>
+                                    <input type="date" class="form-control" id="created_date" name="created_date"
+                                        disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" id="BtnAddSubject">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal for adding subjects-->
+<div class="modal fade rounded-0" id="addSubject" tabindex="-1" aria-labelledby="exampleModalLabelnew"
+    aria-hidden="true" role="dialog">
+    <div class="modal-dialog modal-lg-custom3" role="document">
+        <div class="modal-content">
+            <div class="modal-header justify-content-center custom-gradient2">
+                <h5 class="modal-title" id="exampleModalLabelnew" style="color: white;">Adding Subjects</h5>
+            </div>
+            <div class="modal-body">
+                <div class="container" style="text-align: center; max-width: 100%">
+                    <div class="card" style="max-width: 100%;">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="code">Subject Code:</label>
+                                    <input type="text" class="form-control" id="code">
+                                </div>
+                                <div class="col">
+                                    <label for="description">Subject Description:</label>
+                                    <input type="text" class="form-control" id="description">
+                                </div>
+                                <div class="col">
+                                    <label for="status">Status:</label>
+                                    <select class="form-control" id="status" name="status">
+                                        <option value="Active">Active</option>
+                                        <option value="Inactive">Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="created_by">Created By:</label><br>
+                                    <input type="text" class="form-control" id="created_by" name="created_by" disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="created_date">Created Date:</label>
+                                    <input type="date" class="form-control" id="created_date" name="created_date"
+                                        disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" id="BtnAddSubject">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Modal for editing subjects-->
+<div class="modal fade" id="editSubject" tabindex="-1" aria-labelledby="exampleModalLabelnew" aria-hidden="true"
+    role="dialog">
+    <div class="modal-dialog modal-lg-custom2" role="document">
+        <div class="modal-content  style=" text-align: center;">
+            <div class="modal-header justify-content-center custom-gradient2" style="color: white">
+                <h5 class="modal-title" id="exampleModalLabelnew">Subjects</h5>
+            </div>
+            <div class="modal-body">
+                <div class="container" style="text-align: center; max-width: 100%">
+                    <div class="card" style="max-width: 100%;">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="code_edit">Subject Code:</label>
+                                    <input type="text" class="form-control" id="code_edit">
+                                </div>
+                                <div class="col">
+                                    <label for="status_edit">Status:</label>
+                                    <select class="form-control" id="status_edit" name="status_edit">
+                                        <option value="Active">Active</option>
+                                        <option value="Inactive">Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="description">Subject Description:</label>
+                                    <input type="text" class="form-control" id="description_edit">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="created_by">Created By:</label><br>
+                                    <input type="text" class="form-control" id="created_by_edit" name="created_by_edit"
+                                        disabled>
+                                </div>
+                                <div class="col">
+                                    <label for="created_date">Created Date:</label>
+                                    <input type="text" class="form-control" id="created_date_edit" name="created_date_edit"
+                                        disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" id="saveEditSubject">Save Changes</button>
+            </div>
         </div>
     </div>
 </div>
