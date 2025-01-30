@@ -18,6 +18,7 @@ var studentprofileRouter = require("./routes/studentprofile");
 var adminsubjectRouter = require("./routes/adminsubject");
 var syslogsRouter = require("./routes/syslogs");
 var subjectpriceRouter = require("./routes/subjectprice");
+var studentsubjectRouter = require("./routes/studentsubject");
 
 var { CheckConnection } = require("./routes/repository/db_connect");
 
@@ -49,6 +50,7 @@ app.use("/studentprofile", studentprofileRouter);
 app.use("/adminsubject", adminsubjectRouter);
 app.use("/syslogs", syslogsRouter);
 app.use("/subjectprice", subjectpriceRouter);
+app.use("/studentsubject", studentsubjectRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

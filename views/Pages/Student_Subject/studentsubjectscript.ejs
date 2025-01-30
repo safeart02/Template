@@ -1,0 +1,32 @@
+<script>
+    //GET-STUDENT
+        $(document).ready(function () {
+            $.ajax({
+                url: '/studentsubject/get-studentsubject',
+                method: 'GET',
+                success: function (data) {
+                    console.log(data);
+    
+                    if (Array.isArray(data.subjects)) {
+                        $('#subjectTable tbody').empty();
+    
+                        data.subjects.forEach(subject => {
+                            $('#subjectTable tbody').append(`
+                            <tr>
+                                <th scope="row">${subject.sg_subject_id}</th>
+                                <td>${subject.sg_school_year}</td>
+                                <td>${subject.sg_term}</td>
+                                <td>${subject.sg_status}</td>
+                            </tr>
+                        `);
+                        });
+                    } else {
+                        console.log('Error: "subject" is not an array or missing');
+                    }
+                },
+                error: function (error) {
+                    console.log('Error fetching subject:', error);
+                }
+            });
+        });
+    </script>
