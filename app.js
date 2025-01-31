@@ -48,7 +48,6 @@ app.use("/studentgrade", studentgradeRouter);
 app.use("/subject", subjectRouter);
 app.use("/subjectadd", subjectaddRouter);
 app.use("/studentregistration", studentregistrationRouter);
-app.use(verifyjwt);
 app.use("/tuition", tuitionRouter);
 app.use("/studentdashboard", studentdashboardRouter);
 app.use("/studentprofile", studentprofileRouter);
@@ -56,6 +55,8 @@ app.use("/adminsubject", adminsubjectRouter);
 app.use("/syslogs", syslogsRouter);
 app.use("/subjectprice", subjectpriceRouter);
 app.use("/studentsubject", studentsubjectRouter);
+
+app.use(verifyjwt);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

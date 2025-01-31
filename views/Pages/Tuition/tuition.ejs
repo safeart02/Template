@@ -1,14 +1,11 @@
-<div class="container" style="text-align: center;">
-    <h1>Tuition Fees</h1>
-</div>
+
 
 <div class="container" style="text-align: center; max-width: 100%;">
-    <div class="card" style="max-width: 100%; overflow-x: auto;">
-        <div style="position: absolute; top: 15px; right: 10px; display: flex; gap: 10px;">
-            <button class="btn btn-outline-primary" id="BtnAddStudent">Add Student</button>
+    <div class="card custom-glass" style="max-width: 100%; overflow-x: auto;">
+        <div class="container" style="text-align: center; padding-top: 10px; color:rgb(250, 250, 250)">
+            <h1 style="text-align: center; font-weight: bold; letter-spacing: 5px; font-size: 60px">TUITION FEES</h1>
         </div>
-
-        <div class="card-body mt-5">
+        <div class="card-body">
             <!-- Table with scrollable content -->
             <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
                 <table class="table table-modern">
@@ -30,6 +27,10 @@
         </div>
     </div>
 </div>
+
+<button class="fab" id="BtnEditTuition">
+    <i class="fa fa-plus"></i>
+</button>
 
 <!--Modal for new transactions-->
 <div class="modal fade" id="newTransaction" tabindex="-1" aria-labelledby="exampleModalLabelnew" aria-hidden="true"
