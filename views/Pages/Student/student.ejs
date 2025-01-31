@@ -4,11 +4,9 @@
 </div>
 
 <div class="container" style="text-align: center; max-width: 100%;">
-
-
     <div class="card" style="max-width: 100%; overflow-x: auto;">
         <div style="position: absolute; top: 15px; right: 10px; display: flex; gap: 10px;">
-            <button class="btn btn-primary" id="BtnAddStudent">Add Student</button>
+            <button class="btn btn-outline-primary" id="BtnAddStudent">Add Student</button>
         </div>
 
         <div class="card-body mt-5">
@@ -33,7 +31,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
+
                     </tbody>
                 </table>
             </div>
@@ -42,100 +40,6 @@
 </div>
 
 
-<!-- Modal for Subjects-->
-<div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="exampleModalLabelnew" aria-hidden="true"
-    role="dialog">
-    <div class="modal-dialog modal-lg-custom" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabelnew">Subjects</h5>
-            </div>
-            <div class="modal-body">
-                <div class="container" style="text-align: center; max-width: 100%">
-                    <div class="card" style="max-width: 100%;">
-                        <div style="position: absolute; top: 15px; right: 10px; display: flex; gap: 10px;">
-                            <button class="btn btn-primary" id="BtnAddSubject">Add Subject</button>
-                        </div>
-                        <div class="card-body mt-5">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Subject Code</th>
-                                        <th scope="col">Description</th>
-                                        <th scope="col">Grade</th>
-                                        <th scope="col">Final Grade:</th>
-                                        <th scope="col">School Year:</th>
-                                        <th scope="col">School Term:</th>
-                                        <th scope="col">Status:</th>
-                                        <th scope="col">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>ITEC55</td>
-                                        <td>Data Analytics</td>
-                                        <td>85</td>
-                                        <td>86</td>
-                                        <td>2020-2021</td>
-                                        <td>2</td>
-                                        <td>Active</td>
-                                        <td>
-                                            <button class="btn btn-warning" id="BtnEdit2">Edit</button>
-                                            <button class="btn btn-danger" id="BtnDelete2">Delete</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>ITEC55</td>
-                                        <td>Data Analytics</td>
-                                        <td>85</td>
-                                        <td>86</td>
-                                        <td>2020-2021</td>
-                                        <td>2</td>
-                                        <td>Active</td>
-                                        <td>
-                                            <button class="btn btn-warning" id="viewBtn">Edit</button>
-                                            <button class="btn btn-danger" id="viewBtn">Delete</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>ITEC55</td>
-                                        <td>Data Analytics</td>
-                                        <td>85</td>
-                                        <td>86</td>
-                                        <td>2020-2021</td>
-                                        <td>2</td>
-                                        <td>Active</td>
-                                        <td>
-                                            <button class="btn btn-warning" id="viewBtn">Edit</button>
-                                            <button class="btn btn-danger" id="viewBtn">Delete</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>ITEC55</td>
-                                        <td>Data Analytics</td>
-                                        <td>85</td>
-                                        <td>86</td>
-                                        <td>2020-2021</td>
-                                        <td>2</td>
-                                        <td>Active</td>
-                                        <td>
-                                            <button class="btn btn-warning" id="viewBtn">Edit</button>
-                                            <button class="btn btn-danger" id="viewBtn">Delete</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success" data-dismiss="modal">Save Changes</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!--Modal for Adding Students-->
 <div class="modal fade" id="addStudent" tabindex="-1" aria-labelledby="exampleModalLabelnew" aria-hidden="true"
@@ -205,7 +109,7 @@
                                                     readonly><br>
                                             </div>
                                         </div>
-<!-- 
+                                        <!-- 
                                         <div class="form-row">
                                             <div class="col">
                                                 <label for="created_by">Created By:</label><br>
@@ -220,10 +124,12 @@
                                         </div> -->
 
                                         <br><br>
-
-                                        <div class="mb-3">
-                                            <label for="image" class="form-label">Upload your photo</label>
-                                            <input class="form-control" type="file" id="image" name="image"><br><br>
+                                        <div class="form-group">
+                                            <div class="col mb-3">
+                                                <label for="image" class="custom-file-label">Upload your photo</label>
+                                                <input class="custom-file-input" type="file" id="image"
+                                                    name="image"><br><br>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
@@ -234,7 +140,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success" id="confirmBtn">Confirm</button>
+                <button type="button" class="btn btn-success" id="confirmBtnAddStudent">Confirm</button>
             </div>
         </div>
     </div>
@@ -245,8 +151,8 @@
     role="dialog">
     <div class="modal-dialog modal-lg-custom2" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabelnew">Subjects</h5>
+            <div class="modal-header custom-gradient2 justify-content-center">
+                <h5 class="modal-title" id="exampleModalLabelnew" style="color:white;">Subjects</h5>
             </div>
             <div class="modal-body" style="background-color:rgb(240, 240, 240)">
                 <div class="container" style="text-align: center;">
@@ -255,7 +161,9 @@
                             <div class="row">
                                 <div class="col">
                                     <label for="code">Subject Code:</label><br>
-                                    <input type="text" class="form-control" id="code"><br><br>
+                                    <select class="form-control" id="code">
+                                        <!-- Options will be populated here by jQuery -->
+                                    </select><br><br>
                                 </div>
                                 <div class="col">
                                     <label for="school_year">School Year:</label><br>
@@ -285,7 +193,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success" data-dismiss="modal">Save Changes</button>
+                <button type="button" class="btn btn-success" id="confirmBtn">Proceed</button>
             </div>
         </div>
     </div>
@@ -298,15 +206,12 @@
     role="dialog">
     <div class="modal-dialog modal-lg-custom" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header custom-gradient2">
                 <h5 class="modal-title" id="exampleModalLabelnew">Subjects</h5>
             </div>
             <div class="modal-body" style="background-color:rgb(240, 240, 240)">
                 <div class="container" style="text-align: center; max-width: 100%">
                     <div class="card" style="max-width: 100%;">
-
-
-
                         <div class="card-body">
 
                         </div>
@@ -351,15 +256,18 @@
                             <div class="row">
                                 <div class="col">
                                     <label for="first_name">First Name:</label><br>
-                                    <input type="text" class="form-control" id="first_name_edit" name="first_name"><br><br>
+                                    <input type="text" class="form-control" id="first_name_edit"
+                                        name="first_name"><br><br>
                                 </div>
                                 <div class="col">
                                     <label for="middle_name">Middle Name:</label><br>
-                                    <input type="text" class="form-control" id="middle_name_edit" name="middle_name"><br><br>
+                                    <input type="text" class="form-control" id="middle_name_edit"
+                                        name="middle_name"><br><br>
                                 </div>
                                 <div class="col">
                                     <label for="last_name">Last Name:</label><br>
-                                    <input type="text" class="form-control" id="last_name_edit" name="last_name"><br><br>
+                                    <input type="text" class="form-control" id="last_name_edit"
+                                        name="last_name"><br><br>
                                 </div>
                             </div>
 
@@ -372,11 +280,13 @@
                                 </div>
                                 <div class="col">
                                     <label for="student_id">Student ID:</label><br>
-                                    <input type="text" class="form-control" id="student_id_edit" name="student_id"><br><br>
+                                    <input type="text" class="form-control" id="student_id_edit"
+                                        name="student_id"><br><br>
                                 </div>
                                 <div class="col">
                                     <label for="contact_no">Contact Number:</label><br>
-                                    <input type="text" class="form-control" id="contact_no_edit" name="contact_no"><br><br>
+                                    <input type="text" class="form-control" id="contact_no_edit"
+                                        name="contact_no"><br><br>
                                 </div>
                             </div>
 
@@ -404,12 +314,14 @@
                             </div>
                             <div class="form-row">
                                 <div class="col">
-                                    <label for = "created_by">Created By:</label><br>
-                                    <input type="text" class="form-control" id="created_by_edit" name="created_by" disabled><br>
+                                    <label for="created_by">Created By:</label><br>
+                                    <input type="text" class="form-control" id="created_by_edit" name="created_by"
+                                        disabled><br>
                                 </div>
                                 <div class="col">
                                     <label for="created_date">Created Date:</label><br>
-                                    <input type="text" class="form-control" id="created_date_edit" name="created_date" disabled><br>
+                                    <input type="text" class="form-control" id="created_date_edit" name="created_date"
+                                        disabled><br>
                                 </div>
                             </div>
                         </div>
@@ -424,15 +336,16 @@
     </div>
 </div>
 
+
 <!-- Modal for deleteting students -->
-<div class = "modal fade" id="deleteStudent" tabindex="-1" aria-labelledby="exampleModalLabelnew" aria-hidden="true"
+<div class="modal fade" id="deleteStudent" tabindex="-1" aria-labelledby="exampleModalLabelnew" aria-hidden="true"
     role="dialog">
     <div class="modal-dialog modal-lg-custom3" role="document">
         <div class="modal-content">
             <div class="modal-header custom-gradient2 justify-content-center">
                 <h5 class="modal-title" id="exampleModalLabelnew" style="color:white;">Delete Student</h5>
             </div>
-            <div class="modal-body"  style="background-color:rgb(240, 240, 240)">
+            <div class="modal-body" style="background-color:rgb(240, 240, 240)">
                 <div class="container" style="text-align: center; max-width: 100%">
                     <div class="card" style="max-width: 100%;">
                         <div class="card-body">
@@ -443,8 +356,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger" id="BtnDeleteStudent" data-id="${student.ms_id"}>Delete</button>
+                <button type="button" class="btn btn-danger" id="BtnDeleteStudent" data-id="${student.ms_id"
+                    }>Delete</button>
             </div>
         </div>
-    </div>    
+    </div>
 </div>

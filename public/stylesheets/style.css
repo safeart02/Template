@@ -8,9 +8,7 @@
   background: linear-gradient(to bottom, #EB5A3C, #DF9755);
 }
 
-.glass-gradient {
-  background: linear-gradient(#bf6123, #77370d 40%, #612700 3%, #612700);
-}
+
 
 .loginbody {
   background-image: url('https://i.postimg.cc/jdhfMP7D/vasily-koloda-8-Cq-Dv-Puo-k-I-unsplash.jpg');
@@ -33,27 +31,30 @@
   position: absolute;
   bottom: 0;
   left: 50%;
-  transform: translateX(-50%) translateY(30px); /* Initially move the text down */
-  opacity: 0; /* Start with low opacity (hidden) */
+  transform: translateX(0%) translateY(10px); /* Initially move the text down */
+  opacity: 1; /* Always show the text */
   transition: opacity 0.4s ease, transform 0.4s ease, color 0.3s ease; /* Smooth transition for opacity, position, and color */
 }
 
 .view-student-card:hover .card-body {
   background-color: #007bff28;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)); /* Vignette effect on hover */
 }
 
 .view-subject-card:hover .card-body {
   background-color: #ffc10744;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)); /* Vignette effect on hover */
 }
 
 .check-tuition-card:hover .card-body {
   background-color: #28a7464d;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)); /* Vignette effect on hover */
 }
 
-.view-student-card:hover .card-body,
-.view-subject-card:hover .card-body,
-.check-tuition-card:hover .card-body {
-  background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 1.0)); /* Vignette effect on hover */
+.view-student-card .card-body,
+.view-subject-card .card-body,
+.check-tuition-card .card-body {
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3)); /* Less intense background when not hovered */
 }
 
 .view-student-card:hover .card-title,
@@ -160,4 +161,15 @@ body.dark-mode button {
 
 #sidebarToggle.clicked {
   transform: rotate(180deg);
+}
+
+.btn-add-subject {
+  background-color: #FF8E51;
+  border: none;
+  color: white;
+}
+.btn-add-subject:hover {
+  background-color: #E58049;
+  border: none;
+  color: black;
 }

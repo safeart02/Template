@@ -80,52 +80,58 @@
     }
 
     function loadTuitionDetails(tuitionId) {
-        $.ajax({
-            url: `/tuition/get-transaction/${tuitionId}`, // Fetch transactions using stf_id
-            method: 'GET',
-            success: function (data) {
-                console.log(data);
+    $.ajax({
+        url: `/tuition/get-transaction/${tuitionId}`, // Fetch transactions using stf_id
+        method: 'GET',
+        success: function (data) {
+    console.log(data);
 
-                if (data.success && Array.isArray(data.transactions)) {
-                    const detailsHtml = data.transactions.map(transaction => `
-                    <table class="table table-bordered table-modern">
-                        <thead>
-                            <tr>
-                                <th>Tuition Fee ID</th>
-                                <th>Mode of Payment</th>
-                                <th>Amount</th>
-                                <th>Previous Balance</th>
-                                <th>Current Balance</th>
-                                <th>Received By</th>
-                                <th>Paid By</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>${transaction.ttf_tuition_fee_id}</td>
-                                <td>${transaction.ttf_mode_of_payment}</td>
-                                <td>${transaction.ttf_amount}</td>
-                                <td>${transaction.ttf_previous_balance}</td>
-                                <td>${transaction.ttf_current_balance}</td>
-                                <td>${transaction.ttf_received_by}</td>
-                                <td>${transaction.ttf_paid_by}</td>
-                                <td><button class="btn btn-primary btn-sm">Edit</button></td>
-                            </tr>
-                        </tbody>
-                    </table>`).join('');
+    if (data.success && Array.isArray(data.transactions)) {
+        // Start the table HTML with headers
+        const detailsHtml = `
+            <table class="table table-bordered table-modern">
+                <thead>
+                    <tr>
+                        <th>Tuition Fee ID</th>
+                        <th>Mode of Payment</th>
+                        <th>Amount</th>
+                        <th>Previous Balance</th>
+                        <th>Current Balance</th>
+                        <th>Received By</th>
+                        <th>Paid By</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${data.transactions.map(transaction => `
+                        <tr>
+                            <td>${transaction.ttf_tuition_fee_id}</td>
+                            <td>${transaction.ttf_mode_of_payment}</td>
+                            <td>${transaction.ttf_amount}</td>
+                            <td>${transaction.ttf_previous_balance}</td>
+                            <td>${transaction.ttf_current_balance}</td>
+                            <td>${transaction.ttf_received_by}</td>
+                            <td>${transaction.ttf_paid_by}</td>
+                            <td><button class="btn btn-primary btn-sm">Edit</button></td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+            <button class="btn btn-block btn-add-subject">New Transaction</button>`;
 
-                    // Populate the collapsed section with fetched details
-                    $(`#tuitionDetails${tuitionId}`).html(detailsHtml);
-                } else {
-                    $(`#tuitionDetails${tuitionId}`).html('<p>No transactions found.</p>');
-                }
-            },
-            error: function (error) {
-                console.error('Error fetching tuition details:', error);
-                $(`#tuitionDetails${tuitionId}`).html('<p>Error fetching details.</p>');
-            }
-        });
+        // Populate the collapsed section with fetched details
+        $(`#tuitionDetails${tuitionId}`).html(detailsHtml);
+    } else {
+        $(`#tuitionDetails${tuitionId}`).html('<p>No transactions found.</p>');
     }
+},
+
+        error: function (error) {
+            console.error('Error fetching tuition details:', error);
+            $(`#tuitionDetails${tuitionId}`).html('<p>Error fetching details.</p>');
+        }
+    });
+}
+
 
 </script>

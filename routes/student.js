@@ -153,6 +153,54 @@ router.put("/update-student/:id", (req, res) => {
   }
 });
 
+// Route to fetch subjects for a specific student
+router.get("/get-grades/:studentId", (req, res) => {
+  const { studentId } = req.params;
+
+  // Ensure studentId is valid
+  if (!studentId || isNaN(studentId)) {
+    return res.status(400).json({
+      success: false,
+      message: "Invalid student ID provided.",
+    });
+  }
+
+  // Use string concatenation to inject studentId into the query
+  const sql = `
+    SELECT 
+      sg.sg_id, 
+      sg.sg_student_id,
+      ms_code as sg_subject_id, 
+      sg.sg_school_year, 
+      sg.sg_term, 
+      sg.sg_grades, 
+      sg.sg_final_grade,
+      sg.sg_status
+    FROM student_grade sg
+    INNER JOIN master_subject on ms_id = sg_subject_id
+    WHERE sg.sg_student_id = ${studentId}
+  `;
+  // Use the Select function to execute the query
+  Select(sql, (err, result) => {
+    if (err) {
+      console.error("Database error:", err);
+      return res.status(500).json({
+        success: false,
+        message: "Error fetching student grades.",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Student grades retrieved successfully.",
+      grades: result,
+    });
+  });
+});
+
+
+
+
 
 
 //Display student data on the main table
@@ -183,9 +231,9 @@ router.post("/add-student", (req, res) => {
       address,
     } = req.body;
     const status = 'Enrolled';
-    const created_by = 'Kent'
-    const created_date = '2025-01-23';
-    const student_id = '2025-01-0001'
+    const created_by = 'Kent';
+    const created_date = new Date().toISOString().slice(0, 19).replace('T', ' '); // Dynamically set the created date
+    const student_id = '2025-01-0001';
 
     let sql = `INSERT INTO master_student(ms_student_id, ms_first_name, ms_middle_name, ms_last_name, ms_date_of_birth, ms_contact_no, ms_email, ms_address, ms_status, ms_created_by, ms_created_date) VALUES ?`;
     let data = [[student_id, first_name, middle_name, last_name, date_of_birth, contact_no, email, address, status, created_by, created_date]];
@@ -202,6 +250,7 @@ router.post("/add-student", (req, res) => {
     res.status(500).json({ message: error });
   }
 });
+
 router.put("/update-student", (req, res) => {
   try {
   } catch (error) {
@@ -209,3 +258,45 @@ router.put("/update-student", (req, res) => {
   }; 
 });
 router.delete("/delete-student", (req, res) => {});
+
+router.get("/get-subject-codes", (req, res) => {
+  try {
+    // SQL query to fetch ms_code from master_subject
+    let sql = `SELECT ms_code FROM master_subject`;
+
+    // Call the Select function to query the database
+    Select(sql, (err, result) => {
+      if (err) throw err;  // If an error occurs, throw it to be caught by the try-catch block
+
+      // Send a success response with the subject codes
+      res.status(200).json({
+        message: "Subject codes retrieved successfully",
+        subject_codes: result,
+      });
+    });
+  } catch (error) {
+    // If an error occurs, send a 500 error with the error message
+    res.status(500).json({ message: error.message });
+  }
+});
+
+router.post("/add-subject", (req, res) => {
+  try {
+    const { sg_subject_id, sg_school_year, sg_status, sg_term } = req.body;
+
+    let sql = `INSERT INTO student_subjects (sg_subject_id, sg_school_year, sg_status, sg_term) VALUES ?`;
+    let data = [[sg_subject_id, sg_school_year, sg_status, sg_term]];
+
+    Insert(sql, data, (err, result) => {
+      if (err) {
+        throw err;
+      }
+      res.status(200).json({
+        message: "Subject added successfully",
+        subject: result,
+      });
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});

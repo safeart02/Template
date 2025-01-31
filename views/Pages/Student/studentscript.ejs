@@ -34,10 +34,15 @@
             $('#deleteStudent').modal('show');
         });
     })
+    $(document).ready(function () {
+        $(document).on('click', '#BtnAdd', function () {
+            $('#addSubject').modal('show');
+        });
+    })
 
 
     //POST-STUDENT
-    $(document).on('click', '#confirmBtn', function () {
+    $(document).on('click', '#confirmBtnAddStudent', function () {
         let first_name = $('#first_name').val();
         let middle_name = $('#middle_name').val();
         let last_name = $('#last_name').val();
@@ -66,6 +71,7 @@
                 console.log(error);
             }
         });
+        loadS
     });
 
     $(document).on('click', '#BtnDelete', function () {
@@ -120,26 +126,21 @@
     });
 
 
-
-
     //GET-STUDENT
     $(document).ready(function () {
-        // Fetch students from the database
+        // Fetch students and populate the table
         $.ajax({
-            url: '/student/get-student',  // The endpoint to get the student data
+            url: '/student/get-student',
             method: 'GET',
             success: function (data) {
-                console.log(data);  // Log the full response to inspect it
+                console.log(data);
 
-                // Check if students is an array and handle the response
                 if (Array.isArray(data.students)) {
-                    // Empty the table body before appending new rows
                     $('#studentsTable tbody').empty();
 
-                    // Loop through the students array and add rows to the table
                     data.students.forEach(student => {
                         $('#studentsTable tbody').append(`
-                        <tr>
+                        <tr id="studentRow${student.ms_id}">
                             <th scope="row">${student.ms_student_id}</th>
                             <td>${student.ms_first_name}</td>
                             <td>${student.ms_middle_name}</td>
@@ -152,11 +153,18 @@
                             <td>${student.ms_created_by}</td>
                             <td>${student.ms_created_date}</td>
                             <td>
-                                <button class="btn btn-success" id="BtnView" data-id="${student.ms_id}">View</button>
+                                <button class="btn btn-success btn-view" data-id="${student.ms_id}">
+                                    View
+                                </button>
                             </td>
                             <td class="d-flex" style="gap: 10px;">
                                 <button class="btn btn-primary" id="BtnEdit" data-id="${student.ms_id}">Edit</button>
                                 <button class="btn btn-danger" id="BtnDelete" data-id="${student.ms_id}">Delete</button>
+                            </td>
+                        </tr>
+                        <tr id="detailsRow${student.ms_id}" class="collapse">
+                            <td colspan="13">
+                                <div id="studentSubjects${student.ms_id}"></div>
                             </td>
                         </tr>
                     `);
@@ -169,7 +177,77 @@
                 console.log('Error fetching students:', error);
             }
         });
+
+        // Event listener for the "View" button
+        $(document).on('click', '.btn-view', function () {
+            var studentId = $(this).data('id');  // Get the ms_id from the button's data-id attribute
+            loadStudentGrades(studentId); // Pass ms_id directly
+        });
+
+        // Function to load grades for a specific student
+        function loadStudentGrades(studentId) {
+            $.ajax({
+                url: `/student/get-grades/${studentId}`, // Fetch student grades using ms_id
+                method: 'GET',
+                success: function (data) {
+                    if (data.success && Array.isArray(data.grades)) {
+                        // Create the table rows for each grade
+                        const rowsHtml = data.grades.map(grade => `
+                    <tr>
+                        <td>${grade.sg_subject_id}</td>
+                        <td>${grade.sg_school_year}</td>
+                        <td>${grade.sg_term}</td>
+                        <td>${grade.sg_grades}</td>
+                        <td>${grade.sg_final_grade}</td>
+                        <td>${grade.sg_status}</td>
+                        <td><button class="btn btn-primary btn-sm">Edit</button>
+                            <button class="btn btn-danger btn-sm">Delete</button>
+                        </td>
+                    </tr>
+                `).join('');
+
+                        // Add the "View Grade Details" button at the bottom of the table
+                        const detailsHtml = `
+                    <table class="table table-bordered table-modern">
+                        <thead>
+                            <tr>
+                                <th>Subject Code</th>
+                                <th>School Year</th>
+                                <th>Term</th>
+                                <th>Grade</th>
+                                <th>Final Grade</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${rowsHtml}
+                        </tbody>
+                    </table>
+                    <tr>
+                        <td>
+                            <button class="btn btn-block btn-sm btn-add-subject" id="BtnAdd">ADD SUBJECT</button>
+                        </td>
+
+                    </tr>
+                `;
+
+                        // Populate the collapsed section with fetched grades
+                        $(`#studentSubjects${studentId}`).html(detailsHtml);
+                        $(`#detailsRow${studentId}`).collapse('toggle'); // Toggle the details row to show grades
+                    } else {
+                        $(`#studentSubjects${studentId}`).html('<p>No grades found for this student.</p>');
+                    }
+                },
+                error: function (error) {
+                    console.error('Error fetching student grades:', error);
+                    $(`#studentSubjects${studentId}`).html('<p>Error fetching grades.</p>');
+                }
+            });
+        }
+
     });
+
 
     //PUT-STUDENT (Display student data on edit modal and send ID to update)
     $(document).on('click', '#BtnEdit', function () {
@@ -275,6 +353,63 @@
                 alert('Failed to update student details. Please try again.');
             }
         });
+    });
+
+
+    $(document).ready(function () {
+        // When the modal is shown
+        $('#addSubject').on('shown.bs.modal', function () {
+            // Make an AJAX request to fetch subject codes from the database
+            $.ajax({
+                url: '/student/get-subject-codes', // Express route to fetch subject codes
+                method: 'GET',
+                success: function (data) {
+                    // Clear previous options
+                    $('#code').empty();
+
+                    // Add default option
+
+                    // Loop through the data and add each subject code as an option
+                    data.subject_codes.forEach(function (subject) {
+                        $('#code').append('<option value="' + subject.ms_code + '">' + subject.ms_code + '</option>');
+                    });
+                },
+                error: function () {
+                    alert("Error loading subject codes.");
+                }
+            });
+        });
+    });
+
+    $(document).on('click', '#confirmBtnAdd', function () {
+        let subject_code = $('#code').val();        // Get the subject code
+        let school_year = $('#school_year').val();  // Get the school year
+        let status = $('#status').val();            // Get the status
+        let term = $('#term').val();                // Get the school term
+
+        // Send data to the server using AJAX
+        $.ajax({
+            url: '/subject/add-subject',  // Ensure this URL matches your route in Express
+            method: 'POST',
+            data: {
+                sg_subject_id: subject_code,   // Map to sg_subject_id
+                sg_school_year: school_year,   // Map to sg_school_year
+                sg_status: status,              // Map to sg_status
+                sg_term: term                   // Map to sg_term
+            },
+            success: function (data) {
+                console.log(data);  // Log the response from the server
+                $('#addSubject').modal('hide');  // Hide the modal after successful submission
+            },
+            error: function (error) {
+                console.log(error);  // Log any errors
+            }
+        });
+    });
+
+    $(".custom-file-input").on("change", function () {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
 
 </script>
