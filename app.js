@@ -26,6 +26,10 @@ var app = express();
 
 CheckConnection();
 
+const verifyjwt = require("./middleware/authenticator");
+
+
+
 // view engine setup
 app.set("views", path.join(__dirname, "views/Layouts"));
 app.set("view engine", "ejs");
@@ -36,14 +40,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use("/login", loginRouter);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/login", loginRouter);
 app.use("/student", studentRouter);
 app.use("/studentgrade", studentgradeRouter);
 app.use("/subject", subjectRouter);
 app.use("/subjectadd", subjectaddRouter);
 app.use("/studentregistration", studentregistrationRouter);
+app.use(verifyjwt);
 app.use("/tuition", tuitionRouter);
 app.use("/studentdashboard", studentdashboardRouter);
 app.use("/studentprofile", studentprofileRouter);

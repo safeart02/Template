@@ -1,17 +1,16 @@
 
 
 .custom-gradient {
-  background: linear-gradient(to right, #EB5A3C, #DF9755);
+  background: linear-gradient(to right, #ED9D6F, #EEC1A6);
 }
 
 .custom-gradient2 {
-  background: linear-gradient(to bottom, #EB5A3C, #DF9755);
+  background: linear-gradient(to bottom, #ED9D6F, #EEC1A6);
 }
 
 
-
 .loginbody {
-  background-image: url('https://i.postimg.cc/jdhfMP7D/vasily-koloda-8-Cq-Dv-Puo-k-I-unsplash.jpg');
+  background: url('https://i.postimg.cc/XqY0gpdr/image.png') center/cover;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -173,3 +172,31 @@ body.dark-mode button {
   border: none;
   color: black;
 }
+
+.custom-border {
+  border-color: #E58049;
+  border-radius: 10px;
+  border-width: 4px;
+}
+
+/* Custom smaller inputs */
+.form-control-sm {
+  height: 28px;  /* Make the input field smaller */
+  font-size: 12px;  /* Smaller text */
+  padding: 6px 10px;  /* Adjust padding to reduce field height */
+  border-width: 1px;  /* Slightly reduce the border thickness */
+}
+
+/* Custom button */
+.btn-sm {
+  height: 35px;  /* Reduce button height */
+  font-size: 13px;  /* Smaller text */
+  padding: 6px 12px;  /* Adjust padding */
+}
+
+/* Label adjustments */
+.form-floating label {
+  font-size: 12px;  /* Smaller label text */
+  padding: 0 5px;
+}
+
