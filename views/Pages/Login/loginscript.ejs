@@ -16,19 +16,34 @@ document.getElementById('toggle-password').addEventListener('click', function ()
 });
 
     // Form submission validation
-    document.getElementById('login-form').addEventListener('submit', function(event) {
-        var username = document.getElementById('username').value;
-        var password = document.getElementById('password').value;
+    $(document).ready(function () {
+  $("#login-form").submit(function (event) {
+    event.preventDefault();
 
-        // Check if both username and password fields are filled
-        if (!username || !password) {
-            event.preventDefault();  // Prevent form submission
-            alert('Please enter both username and password.');
-        } else {
-            // If both fields are filled, redirect to localhost:2700
-            event.preventDefault();  // Prevent form submission from the browser
-            window.location.href = "http://localhost:2700";  // Redirect to localhost:2700
-        }
+    var username = $("#username").val();
+    var password = $("#password").val();
+
+    if (!username || !password) {
+      alert("Please enter both username and password.");
+      return;
+    }
+
+    $.ajax({
+      type: "POST",
+      url: "/login",
+      contentType: "application/json",
+      data: JSON.stringify({ username: username, password: password }),
+      success: function (response) {
+        localStorage.setItem("token", response.token); // Store JWT Token
+        
+        // Redirect based on the response's redirectTo field
+        window.location.href = response.redirectTo;
+      },
+      error: function (xhr) {
+        alert(xhr.responseJSON.message || "Login failed");
+      },
     });
+  });
+});
 
 </script>

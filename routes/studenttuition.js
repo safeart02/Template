@@ -4,8 +4,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('studentprofile', { title: 'Express' });
+  res.render('studenttuition', { title: 'Express' });
 });
 
 module.exports = router;
-

@@ -12,11 +12,34 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="/login">Logout</a>
+                <a class="btn btn-primary" href="/logout">Logout</a>
             </div>
         </div>
     </div>
 </div>
+
+
+<script>
+// Clear localStorage or sessionStorage when logging out
+sessionStorage.removeItem('token'); // If you stored it in sessionStorage
+
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const response = await fetch('/getUser');
+    const data = await response.json();
+
+    if (data.username) {
+      document.getElementById("username").textContent = data.username;
+    } else {
+      document.getElementById("username").textContent = "Guest";
+    }
+  } catch (error) {
+    console.error("Error fetching username:", error);
+    document.getElementById("username").textContent = "Error";
+  }
+});
+
+</script>
 
 <!-- Bootstrap core JavaScript-->
 <script src="/vendor/jquery/jquery.min.js"></script>
